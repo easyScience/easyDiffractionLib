@@ -51,7 +51,7 @@ CFML = '^0.0.1'
 "diffpy.utils" = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1"
+pytest = "^8.1"
 toml = "^0.10"
 requests = '^2.24'
 py3Dmol = "^2.0.1"
