@@ -51,8 +51,16 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest",
-    "toml",
+    "build",
+    "codecov>=2.1.11",
+    "coverage",
+    "coveralls",
+    "flake8>=6.0.0",
+    "pytest>=5.2",
+    "pytest-cov>=3.0.0",
+    "ruff",
+    "toml>=0.10",
+    "yapf>=0.31.0",
     "requests",
     "py3Dmol",
     "bokeh",
