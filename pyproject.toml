@@ -15,9 +15,16 @@ version = "0.0.10"
 description = 'Making diffraction data analysis and modelling easy.'
 license = "BSD-3-Clause"
 authors = [
-    {"Simon Ward"},
-    {"Andrew Sazonov"},
-    {"Piotr Rozyczko"}]
+    {name = "Simon Ward"},
+    {name = "Andrew Sazonov", email = "andrew.sazonov@ess.eu"},
+    {name = "Piotr Rozyczko", email = "piotr.rozyczko@ess.eu"}
+]
+
+maintainers = [
+    {name = "Andrew Sazonov", email = "andrew.sazonov@ess.eu"},
+    {name = "Piotr Rozyczko", email = "piotr.rozyczko@ess.eu"}
+]
+
 readme = "README.md"
 homepage = "https://github.com/easyScience/easyDiffractionLib"
 documentation = "https://github.com/easyScience/easyDiffractionLib"
@@ -30,7 +37,6 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 include = ["CHANGELOG.md"]
-packages = [ { include = "easyDiffractionLib" } ]
 
 dependencies = [
     "cryspy @ git+https://github.com/ikibalin/cryspy.git@bravis_type_fix",
@@ -51,6 +57,10 @@ dev = [
     "py3Dmol",
     "bokeh",
 ]
+
+[project.urls]
+homepage = "https://docs.easydiffraction.org"
+documentation = "https://docs.easydiffraction.org"
 
 [tool.hatch.metadata]
 allow-direct-references = true
