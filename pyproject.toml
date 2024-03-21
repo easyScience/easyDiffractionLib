@@ -1,8 +1,6 @@
-# POETRY CONFIG
-
 [build-system]
-requires = ["poetry>=1.0"]
-build-backend = "poetry.masonry.api"
+requires = ["hatchling<=1.21.0"]
+build-backend = "hatchling.build"
 
 [tool.coverage.run]
 source = ['easyDiffractionLib']
@@ -11,15 +9,16 @@ source = ['easyDiffractionLib']
 organization = 'easyScience'
 repo = 'easyDiffractionLib'
 
-[tool.poetry]
+[project]
 name = "easyDiffraction"
-version = "0.0.9"
+version = "0.0.10"
 description = 'Making diffraction data analysis and modelling easy.'
 license = "BSD-3-Clause"
 authors = ["Simon Ward",  "Andrew Sazonov", "Piotr Rozyczko"]
 readme = "README.md"
 homepage = "https://github.com/easyScience/easyDiffractionLib"
 documentation = "https://github.com/easyScience/easyDiffractionLib"
+requires-python = "^3.9, <3.12"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",  # Define that your audience are developers
@@ -30,39 +29,73 @@ classifiers = [
 include = ["CHANGELOG.md"]
 packages = [ { include = "easyDiffractionLib" } ]
 
-[[tool.poetry.source]]
-name = "easyRepo"
-url = "https://easyscience.github.io/pypi/"
-default = false
+dependencies = [
+    "cryspy @ git+https://github.com/ikibalin/cryspy.git@bravis_type_fix",
+    "easyScienceCore>=0.5.0",
+    "easyCrystallography>=0.4.0",
+    "pycifrw>=4.4.1",
+    "CFML>=0.0.1",
+    # GSASII = {version = '^0.0.1', optional=true}
+    "diffpy.pdffit2 == 0.0.0",
+    "diffpy.utils == 3.0.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8, <3.11"
-cryspy = { git = 'https://github.com/ikibalin/cryspy.git', rev = 'bravis_type_fix' }
-# easyScience
-easyScienceCore = "^0.3.0"
-easyCrystallography = "^0.3.0"
-# easyScienceCore = { git = 'https://github.com/easyScience/easyCore.git', rev = 'master' }
-# easyCrystallography = { git = 'https://github.com/easyScience/easyCrystallography.git', rev = 'master' }
-pycifrw = "^4.4.1"
-CFML = '^0.0.1'
-# GSASII = {version = '^0.0.1', optional=true}
-"diffpy.pdffit2" = "0.0.0"
-"diffpy.utils" = "^3.0.0"
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "toml",
+    "requests",
+    "py3Dmol",
+    "bokeh",
+]
 
-[tool.poetry.dev-dependencies]
-pytest = "^7.1"
-toml = "^0.10"
-requests = '^2.24'
-py3Dmol = "^2.0.1"
-bokeh = "^3.0.3"
+[tool.hatch.metadata]
+allow-direct-references = true
 
-[tool.poetry.scripts]
-easyDiffractionLib = "easyDiffractionLib.main:main"
+[tool.hatch.build.targets.wheel]
+packages = ["EasyDiffraction"]
 
-#[[tool.poetry.source]]
-#name = "easyScience"
-#url = "https://easyscience.github.io/pypi/"
-#secondary = true
+[tool.coverage.run]
+source = ['EasyDiffraction']
+
+[tool.ruff]
+line-length = 127
+exclude = [
+    "docs",
+]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.per-file-ignores]
+# allow asserts in test files
+"*test_*.py" = ["S101"]
+
+[tool.ruff.lint]
+ignore-init-module-imports = true
+select = [
+    # flake8 settings from existing CI setup
+    "E9", "F63", "F7", "F82",
+    # Code should be polished to fulfill all cases bellow
+    # https://docs.astral.sh/ruff/rules/
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+#    "UP",
+    # flake8-bugbear
+#    "B",
+    # flake8-simplify
+#    "SIM",
+    # isort
+    "I",
+    # flake8-bandit
+    "S",
+]
+
+[tool.ruff.lint.isort]
+force-single-line = true
 
 [tool.tox]
 legacy_tox_ini = """
@@ -90,8 +123,7 @@ passenv =
     GITHUB_SHA
     COVERAGE_FILE
 deps = coverage
-whitelist_externals = poetry
 commands =
-    poetry install -vvv
-    poetry run pytest --cov --cov-report=xml
+    pip install -e '.[dev]'
+    pytest --cov --cov-report=xml
 """
