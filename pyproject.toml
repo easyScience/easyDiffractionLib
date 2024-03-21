@@ -55,9 +55,6 @@ allow-direct-references = true
 [tool.hatch.build.targets.wheel]
 packages = ["EasyDiffraction"]
 
-[tool.coverage.run]
-source = ['EasyDiffraction']
-
 [tool.ruff]
 line-length = 127
 exclude = [
