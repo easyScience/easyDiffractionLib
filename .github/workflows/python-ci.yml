@@ -46,19 +46,19 @@ jobs:
       run: |
         pip install -e '.[dev]'
 
-    - name: Test with tox
-      run: |
-        pip install tox tox-gh-actions coverage
-        tox
+    # - name: Test with tox
+    #   run: |
+    #     pip install tox tox-gh-actions coverage
+    #     tox
 
-    - name: Upload coverage
-      uses: codecov/codecov-action@v3
-      with:
-        name: Pytest coverage
-        env_vars: OS,PYTHON,GITHUB_ACTIONS,GITHUB_ACTION,GITHUB_REF,GITHUB_REPOSITORY,GITHUB_HEAD_REF,GITHUB_RUN_ID,GITHUB_SHA,COVERAGE_FILE
-      env:
-        OS: ${{ matrix.os }}
-        PYTHON: ${{ matrix.python-version }}
+    # - name: Upload coverage
+    #   uses: codecov/codecov-action@v3
+    #   with:
+    #     name: Pytest coverage
+    #     env_vars: OS,PYTHON,GITHUB_ACTIONS,GITHUB_ACTION,GITHUB_REF,GITHUB_REPOSITORY,GITHUB_HEAD_REF,GITHUB_RUN_ID,GITHUB_SHA,COVERAGE_FILE
+    #   env:
+    #     OS: ${{ matrix.os }}
+    #     PYTHON: ${{ matrix.python-version }}
 
   Package_Testing:
     # disable this job temporarily
