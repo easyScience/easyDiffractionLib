@@ -14,7 +14,10 @@ name = "easyDiffraction"
 version = "0.0.10"
 description = 'Making diffraction data analysis and modelling easy.'
 license = "BSD-3-Clause"
-authors = ["Simon Ward",  "Andrew Sazonov", "Piotr Rozyczko"]
+authors = [
+    {"Simon Ward"},
+    {"Andrew Sazonov"},
+    {"Piotr Rozyczko"}]
 readme = "README.md"
 homepage = "https://github.com/easyScience/easyDiffractionLib"
 documentation = "https://github.com/easyScience/easyDiffractionLib"
