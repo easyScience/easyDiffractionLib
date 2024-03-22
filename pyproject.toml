@@ -51,6 +51,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "six",
     "build",
     "codecov>=2.1.11",
     "coverage",
