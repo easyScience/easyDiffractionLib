@@ -43,7 +43,7 @@ dependencies = [
     "easyScienceCore>=0.5.0",
     "easyCrystallography>=0.4.0",
     "pycifrw>=4.4.1",
-    "CFML>=0.0.1",
+    #"CFML>=0.0.1",
     # GSASII = {version = '^0.0.1', optional=true}
     "diffpy.pdffit2 == 0.0.0",
     "diffpy.utils == 3.0.0",
