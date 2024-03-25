@@ -51,6 +51,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "CFML>=0.0.1",
     "six",
     "build",
     "codecov>=2.1.11",
